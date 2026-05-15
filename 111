@@ -1,0 +1,167 @@
+#include <iostream>
+#include <ctime>
+#include <Windows.h>
+using namespace std;
+int menu() {
+	system("cls");
+	int MenuChoice;
+	cout << "менюшка" << endl;
+	cout << "[1] - начать игру" << endl;
+	cout << "[2] - статистика" << endl;
+	cout << "[3] - настройки" << endl;
+	cout << "[4] - выйти" << endl;
+	cout << "выбери: ";
+	cin >> MenuChoice;
+	return MenuChoice;
+}
+int settings() {
+	int settingschoice;
+	system("cls");
+	cout << "настройки" << endl;
+	cout << "[1] - выбор количества игроков" << endl;
+	cout << "[2] - настройки игрока" << endl;
+	cout << "[3] - настройки компьютера" << endl;
+	cout << "[4] - настройки интерфейса" << endl;
+	cout << "[5] - назад" << endl;
+	cin >> settingschoice;
+	return settingschoice;
+}
+
+
+int main() {
+	SetConsoleCP(65001);
+	SetConsoleOutputCP(65001);
+	srand(time(NULL));
+	int MenuChoice, PlayerNum, settingschoice, playersettingschoice, interfacechoice;
+	int figurechoice = 1, colorchoice = 1;
+	int compcolorchoice = 2, compfigurechoice = 2;
+	string nickname = "игрок 1";
+	char x = 'X', o = 'O';
+	while (true) {
+		MenuChoice = menu();
+		switch (MenuChoice) {
+		case 1: {
+			break;
+		}
+		case 2: {
+			break;
+		}
+		case 3: {
+			settingschoice = settings();
+			switch (settingschoice) {
+			case 1: {
+				cout << "выбор количества игроков" << endl;
+				cout << "[1] - одиночная игра" << endl;
+				cout << "[2] - игра с другом" << endl;
+				cout << "выбери: ";
+				cin >> PlayerNum;
+				break;
+			}
+			case 2: {
+				cout << "настройки игрока" << endl;
+				cout << "[1] - ник: " << nickname << endl;
+				if (compfigurechoice == 1) {
+					cout << "[2] - фигура: " << x << endl;
+				}
+				else {
+					cout << "[2] - фигура: " << o << endl;
+				}
+				if (compcolorchoice == 1) {
+					cout << "[3] - цвет: " << "\033[1;31mкрасный (по умолчанию)\033[1;0m" << endl;
+				}
+				else {
+					cout << "[3] - цвет: " << "\033[1;36mголубой\033[1;0m" << endl;
+				}
+				cout << "выбери: " << endl;
+				cin >> playersettingschoice;
+				switch (playersettingschoice) {
+				case 1: {
+					cout << "введи новый ник: ";
+					cin >> nickname;
+					break;
+				}
+				case 2: {
+					cout << "выбери фигуру: ";
+					cout << "[1] - X" << endl;
+					cout << "[2] - O" << endl;
+					cin >> figurechoice;
+					break;
+				}
+				case 3: {
+					cout << "настройки цвета" << endl;
+					cout << "[1] - \033[1;31mкрасный\033[1;0m" << endl;
+					cout << "[3] - \033[1;36mголубой\033[1;0m" << endl;
+					cin >> colorchoice;
+					break;
+				}
+					  break;
+				}
+				break;
+			}
+			case 3: {
+				cout << "настройки компьютера" << endl;
+				if (figurechoice == 1) {
+					cout << "[1] - фигура: " << o << endl;
+				}
+				else {
+					cout << "[1] - фигура: " << x << endl;
+				}
+				if (colorchoice == 1) {
+					cout << "[2] - цвет: " << "\033[1;36mголубой\033[1;0m" << endl;
+				}
+				else {
+					cout << "[2] - цвет: " << "\033[1;31mкрасный\033[1;0m" << endl;
+				}
+				cout << "выбери: " << endl;
+				cin >> playersettingschoice;
+				switch (playersettingschoice) {
+				case 2: {
+					cout << "выбери фигуру: ";
+					cout << "[1] - X" << endl;
+					cout << "[2] - O" << endl;
+					cin >> compfigurechoice;
+					break;
+				}
+				case 3: {
+					cout << "настройки цвета" << endl;
+					cout << "[1] - \033[1;31mкрасный\033[1;0m" << endl;
+					cout << "[3] - \033[1;36mголубой\033[1;0m" << endl;
+					cin >> compcolorchoice;
+					break;
+				}
+					  break;
+				}
+
+			case 4: {
+
+				cout << "настройки интерфейса" << endl;
+				cout << "[1] - светлая тема (по умолчанию)" << endl;
+				cout << "[2] - \033[1;35mрозовая тема\033[1;0m" << endl;
+				cout << "[2] - \033[1;37mрозовая тема\033[1;0m" << endl;
+				cin >> interfacechoice;
+				break;
+			}
+			case 5: {
+				menu();
+				break;
+			}
+			}
+				  break;
+			}
+			break;
+
+		}
+		case 4: {
+			cout << "вы вышли";
+			return 0;
+		}
+
+
+		}
+
+
+		system("pause");
+	}
+
+	return 0;
+}
